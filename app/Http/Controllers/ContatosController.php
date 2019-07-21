@@ -29,6 +29,17 @@ class ContatosController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  Contato  $contato
+     * @return Contato
+     */
+    public function show(Contato $contato)
+    {
+        return $contato::with('mensagens')->where('id', $contato->id)->get();
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

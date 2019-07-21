@@ -29,7 +29,9 @@ class MensagensController extends Controller
         if(!Contato::find($request->contato_id)) {
             return response()->json(['message' => 'Contato a ser relacionado não existe.'], 404);
         }
+
         $mensagem = Mensagem::create($request->all());
+
         if($mensagem){
             return response()->json(['data' => $mensagem],201);
         } else {
@@ -41,12 +43,12 @@ class MensagensController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  Mensagem  $mensagem
+     * @param  Mensagem  $mensagen
      * @return Mensagem
      */
-    public function show(Mensagem $mensagem)
+    public function show(Mensagem $mensagen)
     {
-        return $mensagem;
+        return $mensagen;
     }
 
     /**
@@ -56,10 +58,10 @@ class MensagensController extends Controller
      * @param  Mensagem  $mensagem
      * @return Mensagem
      */
-    public function update(Request $request, Mensagem $mensagem)
+    public function update(Request $request, Mensagem $mensagen)
     {
-        $mensagem->update($request->all());
-        return $mensagem;
+        $mensagen->update($request->all());
+        return $mensagen;
     }
 
     /**
@@ -68,9 +70,9 @@ class MensagensController extends Controller
      * @param  Mensagem  $mensagem
      * @return Mensagem
      */
-    public function destroy(Mensagem $mensagem)
+    public function destroy(Mensagem $mensagen)
     {
-        $mensagem->delete();
-        return $mensagem;
+        $mensagen->delete();
+        return $mensagen;
     }
 }
