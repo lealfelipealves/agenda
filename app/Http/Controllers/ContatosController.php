@@ -38,7 +38,7 @@ class ContatosController extends Controller
      * @param  Contato  $contato
      * @return Contato
      */
-    public function destroy(Request $request, Contato $contato)
+    public function destroy(Contato $contato)
     {
         $contato->delete();
         return $contato;

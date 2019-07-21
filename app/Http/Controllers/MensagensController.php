@@ -58,7 +58,7 @@ class MensagensController extends Controller
      * @param  Mensagem  $mensagem
      * @return Mensagem
      */
-    public function destroy(Request $request, Mensagem $mensagem)
+    public function destroy(Mensagem $mensagem)
     {
         $mensagem->delete();
         return $mensagem;
