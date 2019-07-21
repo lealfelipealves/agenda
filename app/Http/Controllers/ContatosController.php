@@ -14,54 +14,125 @@ class ContatosController extends Controller
      */
     public function index()
     {
-        return Contato::with('mensagens')->get();
+        try {
+            $contatos = Contato::with('mensagens')->get();
+            return response()->json(['contatos' => $contatos], 200);
+        } catch (\Exception $e) {
+            return response()->json('Ocorreu um erro no servidor', 500);
+        }
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return Contato
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        return Contato::create($request->all());
+        try {
+            $data = $request->only(['nome', 'sobrenome', 'email', 'telefone']);
+
+            if($data) {
+                $contato = Contato::create($data);
+                if($contato) {
+                    return response()->json(['data' => $contato],201);
+                } else {
+                    return response()->json(['message' => 'Erro ao criar contato'],400);
+                }
+            } else {
+                return response()->json(['message' => 'Dados inválidos'],400);
+            }
+        } catch (\Exception $e) {
+            return response()->json('Ocorreu um erro no servidor', 500);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Contato  $contato
-     * @return Contato
+     * @param  integer  $id
+     * @return \Illuminate\Http\Response
      */
-    public function show(Contato $contato)
+    public function show($id)
     {
-        return $contato::with('mensagens')->where('id', $contato->id)->get();
+        try {
+            if($id < 0) {
+                return response()->json(['message' => 'ID menor que zero, por favor, informe um ID válido'],400);
+            }
+
+            $contato = Contato::with('mensagens')->where('id', $id)->get();
+
+            if($contato) {
+                return response()->json([$contato], 200);
+            } else {
+                return response()->json([
+                    'message'=>'O contato com id '.$id.' não existe'
+                ], 404);
+            }
+        } catch (\Exception $e) {
+            return response()->json('Ocorreu um erro no servidor', 500);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Contato  $contato
-     * @return Contato
+     * @param  integer  $id
+     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contato $contato)
+    public function update(Request $request, $id)
     {
-        $contato->update($request->all());
-        return $contato;
+        try {
+
+            $data = $request->only(['nome', 'sobrenome', 'email', 'telefone']);
+
+            if($data) {
+                $contato = Contato::find($id);
+
+                if($contato) {
+                    $contato->update($data);
+                    return response()->json(['data' => $contato],200);
+                } else {
+                    return response()->json([
+                        'message' => 'O contato com id '.$id.' nao existe'
+                    ],400);
+                }
+            } else {
+                return response()->json(['message' => 'Dados inválidos'],400);
+            }
+        } catch (\Exception $e) {
+            return response()->json('Ocorreu um erro no servidor', 500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Contato  $contato
-     * @return Contato
+     * @param  integer  $id
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(Contato $contato)
+    public function destroy($id)
     {
-        $contato->delete();
-        return $contato;
+        try {
+            if($id < 0) {
+                return response()->json(['message' => 'ID menor que zero, por favor, informe um ID válido'],400);
+            }
+
+            $contato = Contato::find($id);
+
+            if($contato) {
+                $contato->delete();
+                return response()->json([],204);
+            } else {
+                return response()->json([
+                    'message'=>'O contato com id '.$id.' nao existe'
+                ], 404);
+            }
+        } catch (\Exception $e) {
+            return response()->json('Ocorreu um erro no servidor', 500);
+        }
     }
 }
