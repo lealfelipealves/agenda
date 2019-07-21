@@ -24,7 +24,8 @@ class MensagensRequest extends FormRequest
     public function rules()
     {
         return [
-            'descricao' => 'required',
+            'contato_id' => 'required|numeric',
+            'descricao' => 'required'
         ];
     }
 }
