@@ -14,10 +14,10 @@ class CreateMensagensTable extends Migration
     public function up()
     {
         Schema::create('mensagens', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->bigInteger('contato_id')->unsigned();
             $table->foreign('contato_id')->references('id')->on('contatos')->onDelete('cascade');
             $table->text('descricao');
-            $table->primary('contato_id');
         });
     }
 

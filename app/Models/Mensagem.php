@@ -9,10 +9,9 @@ class Mensagem extends Model
     protected $table = 'mensagens';
 
     protected $fillable = [
+        'contato_id',
         'descricao'
     ];
-
-    protected $primaryKey = 'contato_id';
 
     public $timestamps = false;
 
