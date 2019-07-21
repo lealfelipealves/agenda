@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\MensagensRequest as Request;
+use App\Models\Mensagem;
 
 class MensagensController extends Controller
 {
