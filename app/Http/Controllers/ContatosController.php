@@ -8,6 +8,16 @@ use App\Models\Contato;
 class ContatosController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     *
+     * @return Contato[]
+     */
+    public function index()
+    {
+        return Contato::with('mensagens')->get();
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
