@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MensagensRequest as Request;
+use App\Models\Contato;
 use App\Models\Mensagem;
 
 class MensagensController extends Controller
@@ -21,11 +22,20 @@ class MensagensController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return Mensagem
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        return Mensagem::create($request->all());
+        if(!Contato::find($request->contato_id)) {
+            return response()->json(['message' => 'Contato a ser relacionado não existe.'], 404);
+        }
+        $mensagem = Mensagem::create($request->all());
+        if($mensagem){
+            return response()->json(['data' => $mensagem],201);
+        } else {
+            return response()->json(['message' => 'Erro ao criar a mensagem'],400);
+        }
+
     }
 
     /**
