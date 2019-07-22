@@ -8,12 +8,12 @@ Projeto desenvolvido em Laravel 5.8 com sqlite.
 
 Desenvolver a API RESTful de uma agenda com as seguintes tecnologias PHP + LARAVEL
 
--[x] Permitir cadastrar contato (nome, sobrenome, e-mail e telefone). 
--[x] Permitir cadastrar mensagem (contato (fk), descrição). 
--[x] Listar todas as mensagens por contato. 
--[x] Permitir alterar e excluir uma mensagem. 
--[x] Permitir alterar e excluir de um contato. 
--[x] Validar os campos postados.
+- Permitir cadastrar contato (nome, sobrenome, e-mail e telefone). 
+- Permitir cadastrar mensagem (contato (fk), descrição). 
+- Listar todas as mensagens por contato. 
+- Permitir alterar e excluir uma mensagem. 
+- Permitir alterar e excluir de um contato. 
+- Validar os campos postados.
 
 ## Instalação
 1. `git clone https://github.com/lealfelipealves/agenda.git`
