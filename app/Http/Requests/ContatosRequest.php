@@ -27,7 +27,7 @@ class ContatosRequest extends FormRequest
             'nome' => 'required|min:3|max:255',
             'sobrenome' => 'required|min:3|max:255',
             'email' => 'required|email',
-            'telefone' => 'required|numeric'
+            'telefone' => 'required|numeric|min:8'
         ];
     }
 }

@@ -25,7 +25,7 @@ class MensagensRequest extends FormRequest
     {
         return [
             'contato_id' => 'required|numeric',
-            'descricao' => 'required'
+            'descricao' => 'required|min:3'
         ];
     }
 }
