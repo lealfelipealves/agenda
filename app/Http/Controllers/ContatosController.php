@@ -18,7 +18,7 @@ class ContatosController extends Controller
             $contatos = Contato::with('mensagens')->get();
             return response()->json(['contatos' => $contatos], 200);
         } catch (\Exception $e) {
-            return response()->json('Ocorreu um erro no servidor', 500);
+            return response()->json(['message' => 'Ocorreu um erro no servidor'], 500);
         }
     }
 
@@ -44,7 +44,7 @@ class ContatosController extends Controller
                 return response()->json(['message' => 'Dados inválidos'],400);
             }
         } catch (\Exception $e) {
-            return response()->json('Ocorreu um erro no servidor', 500);
+            return response()->json(['message' => 'Ocorreu um erro no servidor'], 500);
         }
     }
 
@@ -61,7 +61,7 @@ class ContatosController extends Controller
                 return response()->json(['message' => 'ID menor que zero, por favor, informe um ID válido'],400);
             }
 
-            $contato = Contato::with('mensagens')->where('id', $id)->get();
+            $contato = Contato::with('mensagens')->where('id', $id)->first();
 
             if($contato) {
                 return response()->json([$contato], 200);
@@ -71,7 +71,7 @@ class ContatosController extends Controller
                 ], 404);
             }
         } catch (\Exception $e) {
-            return response()->json('Ocorreu um erro no servidor', 500);
+            return response()->json(['message' => 'Ocorreu um erro no servidor'], 500);
         }
     }
 
@@ -103,7 +103,7 @@ class ContatosController extends Controller
                 return response()->json(['message' => 'Dados inválidos'],400);
             }
         } catch (\Exception $e) {
-            return response()->json('Ocorreu um erro no servidor', 500);
+            return response()->json(['message' => 'Ocorreu um erro no servidor'], 500);
         }
     }
 
@@ -132,7 +132,7 @@ class ContatosController extends Controller
                 ], 404);
             }
         } catch (\Exception $e) {
-            return response()->json('Ocorreu um erro no servidor', 500);
+            return response()->json(['message' => 'Ocorreu um erro no servidor'], 500);
         }
     }
 }

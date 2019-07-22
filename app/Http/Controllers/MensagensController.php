@@ -16,10 +16,10 @@ class MensagensController extends Controller
     public function index()
     {
         try {
-            $mensagens = Mensagem::all();
+            $mensagens = Mensagem::with('contato')->get();
             return response()->json(['mensagens' => $mensagens], 200);
         } catch (\Exception $e) {
-            return response()->json('Ocorreu um erro no servidor', 500);
+            return response()->json(['message' => 'Ocorreu um erro no servidor'], 500);
         }
     }
 
@@ -50,7 +50,7 @@ class MensagensController extends Controller
                 return response()->json(['message' => 'Dados inválidos.'],400);
             }
         } catch (\Exception $e) {
-            return response()->json('Ocorreu um erro no servidor', 500);
+            return response()->json(['message' => 'Ocorreu um erro no servidor'], 500);
         }
     }
 
@@ -67,17 +67,17 @@ class MensagensController extends Controller
                 return response()->json(['message' => 'ID menor que zero, por favor, informe um ID válido'],400);
             }
 
-            $mensagem = Mensagem::find($id);
+            $mensagem = Mensagem::with('contato')->where('id', $id)->first();
 
             if($mensagem) {
                 return response()->json([$mensagem], 200);
             } else {
                 return response()->json([
-                    'message'=>'A mensagem com id '.$id.' não existe'
+                    'message' => 'A mensagem com id '.$id.' não existe'
                 ], 404);
             }
         } catch (\Exception $e) {
-            return response()->json('Ocorreu um erro no servidor', 500);
+            return response()->json(['message' => 'Ocorreu um erro no servidor'], 500);
         }
     }
 
@@ -108,7 +108,7 @@ class MensagensController extends Controller
                 return response()->json(['message' => 'Dados invalidos'],400);
             }
         } catch (\Exception $e) {
-            return response()->json('Ocorreu um erro no servidor', 500);
+            return response()->json(['message' => 'Ocorreu um erro no servidor'], 500);
         }
     }
 
@@ -136,7 +136,7 @@ class MensagensController extends Controller
                 ], 404);
             }
         } catch (\Exception $e) {
-            return response()->json('Ocorreu um erro no servidor', 500);
+            return response()->json(['message' => 'Ocorreu um erro no servidor'], 500);
         }
     }
 }
