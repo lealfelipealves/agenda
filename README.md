@@ -4,6 +4,9 @@
 
 Projeto desenvolvido em Laravel 5.8 com sqlite.
 
+http://agenda.felipeleal.eng.br/api/v1/contatos
+http://agenda.felipeleal.eng.br/api/v1/mensagens
+
 ## Objetivo
 
 Desenvolver a API RESTful de uma agenda com as seguintes tecnologias PHP + LARAVEL
