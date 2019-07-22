@@ -6,9 +6,9 @@ Projeto desenvolvido em Laravel 5.8 com sqlite.
 
 - https://documenter.getpostman.com/view/4966704/SVSNL7uj
 
-- http://agenda.felipeleal.eng.br/api/v1/contatos
+- http://send4agenda.herokuapp.com/api/v1/contatos
 
-- http://agenda.felipeleal.eng.br/api/v1/mensagens
+- http://send4agenda.herokuapp.com/api/v1/mensagens
 
 
 ## Objetivo
@@ -84,17 +84,17 @@ ___
 
 ### Lista todos os contato e suas mensagens.
 ```
-GET     http://agenda.felipeleal.eng.br/api/v1/contatos
+GET     http://send4agenda.herokuapp.com/api/v1/contatos
 ```
 
 ### Consulta um contato e suas mensagens.
 ```
-GET     http://agenda.felipeleal.eng.br/api/v1/contatos/1
+GET     http://send4agenda.herokuapp.com/api/v1/contatos/1
 ```
 
 ### Cria Contato
 ```
-POST    http://agenda.felipeleal.eng.br/api/v1/contatos
+POST    http://send4agenda.herokuapp.com/api/v1/contatos
 ----------------------------------------------
 Exemplo:
 {
@@ -107,7 +107,7 @@ Exemplo:
 
 ### Edita Contato
 ```
-PUT    http://agenda.felipeleal.eng.br/api/v1/contatos/1
+PUT    http://send4agenda.herokuapp.com/api/v1/contatos/1
 ----------------------------------------------
 Exemplo:
 {
@@ -120,7 +120,7 @@ Exemplo:
 
 ### Deleta Contato
 ```
-DELETE  http://agenda.felipeleal.eng.br/api/v1/contatos/1
+DELETE  http://send4agenda.herokuapp.com/api/v1/contatos/1
 ```
 
 
@@ -128,17 +128,17 @@ DELETE  http://agenda.felipeleal.eng.br/api/v1/contatos/1
 
 ### Lista todas as mensagens e seus respectivos contatos.
 ```
-GET     http://agenda.felipeleal.eng.br/api/v1/mensagens
+GET     http://send4agenda.herokuapp.com/api/v1/mensagens
 ```
 
 ### Consulta uma mensagem e seu contato.
 ```
-GET     http://agenda.felipeleal.eng.br/api/v1/mensagens/1
+GET     http://send4agenda.herokuapp.com/api/v1/mensagens/1
 ```
 
 ### Cria mensagem
 ```
-POST    http://agenda.felipeleal.eng.br/api/v1/mensagens
+POST    http://send4agenda.herokuapp.com/api/v1/mensagens
 ----------------------------------------------
 Exemplo:
 {
@@ -149,7 +149,7 @@ Exemplo:
 
 ### Edita mensagem
 ```
-PUT    http://agenda.felipeleal.eng.br/api/v1/mensagens/1
+PUT    http://send4agenda.herokuapp.com/api/v1/mensagens/1
 ----------------------------------------------
 Exemplo:
 {
@@ -160,5 +160,5 @@ Exemplo:
 
 ### Deleta mensagem
 ```
-DELETE  http://agenda.felipeleal.eng.br/api/v1/mensagens/1
+DELETE  http://send4agenda.herokuapp.com/api/v1/mensagens/1
 ```
