@@ -45,8 +45,6 @@ Alterar no arquivo .env a configuração do banco de dados.
 ```
 ...
 DB_CONNECTION=sqlite
-DB_HOST=127.0.0.1
-DB_PORT=3306
 ...
 ```
 
